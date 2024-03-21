@@ -12,3 +12,11 @@ SECTIONS {
     KEEP(*(.boot2));
   } > BOOT2
 } INSERT BEFORE .text;
+
+
+SECTIONS {
+  .got ORIGIN(FLASH) :
+  {
+    KEEP(*(.got*));
+  } > FLASH
+} INSERT AFTER .text;
