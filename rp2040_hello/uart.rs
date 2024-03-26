@@ -69,7 +69,7 @@ fn main() -> ! {
             clocks.system_clock.freq().to_Hz()
         )
         .unwrap();
-        delay.delay_ms(10);
+        delay.delay_ms(380);
         value += 1;
     }
 }

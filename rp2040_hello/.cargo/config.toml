@@ -5,8 +5,7 @@ runner = "elf2uf2-rs -d"
 rustflags = [
   "-C", "linker=flip-link",
   "-C", "link-arg=--nmagic",
-  "-C", "link-arg=-Tlink.x",
-  "-C", "link-arg=-Tdefmt.x",
+  "-C", "link-arg=-Tmemory.x",
 
   # Code-size optimizations.
   #   trap unreachable can save a lot of space, but requires nightly compiler.
@@ -14,6 +13,10 @@ rustflags = [
   # "-Z", "trap-unreachable=no",
   "-C", "inline-threshold=5",
   "-C", "no-vectorize-loops",
+  "-C", "relocation-model=ropi",
+  "-C", "embed-bitcode=yes",
+  "-C", "codegen-units=1",
+  "-C", "link-args=--emit-relocs"
 ]
 
 [build]

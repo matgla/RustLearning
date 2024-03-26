@@ -1,0 +1,18 @@
+[target.thumbv6m-none-eabi]
+# linker = "arm-none-eabi-ld"
+
+[target.'cfg(all(target_arch = "arm", target_os = "none"))']
+
+# linker = "arm-none-eabi-ld"
+
+rustflags = [
+  # "-C", "linker=flip-link",
+  "-C", "link-arg=--nmagic",
+  "-C", "link-arg=-Tlink.x",
+  "-C", "relocation-model=ropi",
+  "-C", "link-args=--emit-relocs --unresolved-symbols=ignore-in-object-files",
+
+]
+
+[build]
+target = "thumbv6m-none-eabi"

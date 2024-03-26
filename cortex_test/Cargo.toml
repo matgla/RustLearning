@@ -1,0 +1,21 @@
+[package]
+name = "cortex_test"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+cortex-m = "0.7.7"
+panic-halt = "0.2.0"
+libc = "0.2"
+
+[[bin]]
+name = "reloc"
+path = "src/main.rs"
+
+
+[profile.release]
+codegen-units = 1
+debug = false 
+lto = true
